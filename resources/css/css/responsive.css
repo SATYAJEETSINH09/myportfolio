@@ -1,0 +1,200 @@
+/* ==========================================================================
+   RESPONSIVE.CSS - Mobile & Screen Media Queries
+   ========================================================================== */
+
+/* Large Desktop (1440px - 1920px) */
+@media (min-width: 1440px) {
+  :root {
+    --container-max: 1400px;
+  }
+}
+
+/* Tablets & Small Desktops (1024px) */
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .hero-terminal-container {
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .about-statement {
+    position: static;
+  }
+
+  .project-card-featured {
+    grid-template-columns: 1fr;
+  }
+
+  .project-media-wrap {
+    min-height: 320px;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+
+  .contact-editorial-layout {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  .contact-vertical-divider {
+    display: none;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+}
+
+/* Tablet Portrait & Large Phones (768px) */
+@media (max-width: 768px) {
+  .nav-links,
+  .nav-actions .btn {
+    display: none;
+  }
+
+  .mobile-nav-toggle {
+    display: inline-flex;
+  }
+
+  .section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .hero-section {
+    padding-top: 6rem;
+    min-height: auto;
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-ctas .btn {
+    width: 100%;
+  }
+
+  .projects-split-row {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .expertise-row {
+    grid-template-columns: 40px 1fr 30px;
+    gap: 1rem;
+    padding: 1.5rem 0;
+  }
+
+  .exp-desc {
+    grid-column: 1 / -1;
+    padding-left: 40px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .toolkit-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .notes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .case-study-meta-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .role-breakdown-grid,
+  .problem-solution-cards,
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Chat Assistant Mobile Bottom Sheet */
+  .ai-assistant-widget {
+    bottom: 1.25rem;
+    right: 1.25rem;
+  }
+
+  .ai-chat-window {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 100%;
+    height: 82vh;
+    max-height: 82vh;
+    border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+  }
+}
+
+/* Small Mobile (390px, 375px, 320px) */
+@media (max-width: 480px) {
+  :root {
+    --container-padding: 1.25rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .stat-item {
+    padding-left: 1.25rem;
+  }
+
+  .about-highlights {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-container {
+    margin: 0;
+    border-radius: var(--radius-lg);
+  }
+
+  .case-study-hero,
+  .case-study-body {
+    padding: 1.5rem;
+  }
+
+  .case-study-meta-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}

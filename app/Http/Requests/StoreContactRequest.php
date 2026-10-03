@@ -1,0 +1,44 @@
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class StoreContactRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     */
+    public function rules(): array
+    {
+        return [
+            'name' => ['required', 'string', 'max:100'],
+            'email' => ['required', 'email', 'max:255'],
+            'project_type' => ['required', 'string', 'max:100'],
+            'budget' => ['nullable', 'string', 'max:100'],
+            'message' => ['required', 'string', 'max:5000'],
+        ];
+    }
+
+    /**
+     * Custom error messages.
+     */
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'Please provide your name.',
+            'email.required' => 'Please provide a valid email address.',
+            'email.email' => 'Please provide a valid email address format.',
+            'project_type.required' => 'Please select a project category.',
+            'message.required' => 'Please include your project details or message.',
+        ];
+    }
+}

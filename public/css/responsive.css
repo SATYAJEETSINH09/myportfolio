@@ -1,0 +1,1227 @@
+/* ==========================================================================
+   RESPONSIVE.CSS - Comprehensive Mobile, Tablet & Small Screen Adaptations
+   Optimized for: 320px (Smallest Phones), 360px/375px/390px/430px (Smartphones),
+   640px/768px (Phablets/Tablet Portrait), 1024px (iPad/Tablet Landscape), 
+   and 1280px+ (Desktop).
+   ========================================================================== */
+
+/* Global Overflow Protection */
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+  width: 100% !important;
+  position: relative;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+img, svg, video, canvas, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+/* --- 01. Large Desktop (1440px+) --- */
+@media (min-width: 1440px) {
+  :root {
+    --container-max: 1400px;
+  }
+}
+
+/* --- 02. Small Desktops & Landscape Tablets (1025px - 1280px) --- */
+@media (max-width: 1280px) {
+  :root {
+    --container-padding: 2rem;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 3rem;
+  }
+
+  .projects-editorial-grid {
+    gap: 3.5rem;
+  }
+}
+
+/* --- 03. Tablets & iPad (769px - 1024px) --- */
+@media (max-width: 1024px) {
+  :root {
+    --container-padding: 2rem;
+  }
+
+  /* Section Spacing */
+  .section {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    padding-top: 7rem;
+    padding-bottom: 4rem;
+    min-height: auto;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  .hero-left {
+    max-width: 100%;
+  }
+
+  .hero-terminal-container {
+    max-width: 680px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  /* About Grid */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .about-statement {
+    position: static;
+  }
+
+  .about-highlights {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Stats Grid */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+
+  /* Projects Section */
+  .project-card-featured {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .project-media-wrap {
+    height: auto;
+    min-height: auto;
+    aspect-ratio: auto;
+    overflow: visible;
+    padding: 1.5rem 1.25rem;
+  }
+
+  .projects-split-row,
+  .projects-split-row.alt {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  /* Services Grid */
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  /* Toolkit Grid */
+  .toolkit-categories {
+    gap: 2.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .toolkit-cat-group {
+    grid-template-columns: 160px 1fr;
+    gap: 1.5rem;
+  }
+
+  .toolkit-pill-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.85rem;
+  }
+
+  /* Notes Grid */
+  .notes-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  /* Contact Editorial Layout */
+  .contact-editorial-layout {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  .contact-vertical-divider {
+    display: none;
+  }
+
+  /* Footer */
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  /* Modals */
+  .modal-container {
+    max-width: 90vw;
+    margin: 2rem auto;
+  }
+}
+
+/* --- 04. Mobile Devices & Tablet Portrait (max-width: 768px) --- */
+@media (max-width: 768px) {
+  :root {
+    --container-padding: 1.25rem;
+  }
+
+  /* Navbar Responsive */
+  .navbar-inner {
+    height: 66px;
+  }
+
+  .nav-links,
+  .nav-actions .btn {
+    display: none;
+  }
+
+  .mobile-nav-toggle {
+    display: inline-flex;
+  }
+
+  /* Section Spacing */
+  .section {
+    padding-top: 3.75rem;
+    padding-bottom: 3.75rem;
+  }
+
+  /* Section Typography */
+  .section-title {
+    font-size: clamp(1.75rem, 6.8vw, 2.75rem);
+    letter-spacing: -0.03em;
+    word-break: break-word;
+  }
+
+  .section-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    word-break: break-word;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    padding-top: 5.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .hero-eyebrow {
+    margin-bottom: 1rem;
+    gap: 0.5rem;
+    max-width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .status-pill {
+    font-size: 0.6875rem;
+    padding: 0.35rem 0.75rem;
+    max-width: 100%;
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  .badge-status {
+    font-size: 0.6875rem;
+    padding: 0.35rem 0.75rem;
+  }
+
+  .hero-title {
+    font-size: clamp(1.45rem, 6.4vw, 2.75rem);
+    letter-spacing: -0.035em;
+    line-height: 1.02;
+    margin-bottom: 1.25rem;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+  }
+
+  .hero-role-badge {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    word-break: break-word;
+    max-width: 100%;
+  }
+
+  .hero-subheadline,
+  .hero-description {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin-bottom: 1.75rem;
+    word-break: break-word;
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.85rem;
+  }
+
+  .hero-ctas .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.95rem 1.5rem;
+  }
+
+  .hero-quick-links {
+    margin-top: 2rem;
+    padding-top: 1.25rem;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  /* Terminal Window */
+  .hero-terminal-container {
+    max-width: 100%;
+  }
+
+  .terminal-box {
+    border-radius: var(--radius-md);
+  }
+
+  .terminal-header {
+    padding: 0.75rem 1rem;
+  }
+
+  .terminal-tabs {
+    gap: 0.35rem;
+  }
+
+  .terminal-tab-btn {
+    font-size: 0.6875rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .terminal-body {
+    padding: 1.25rem;
+    font-size: 0.75rem;
+    line-height: 1.55;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Infinite Marquee */
+  .marquee-wrapper {
+    padding: 0.85rem 0;
+  }
+
+  .marquee-item {
+    font-size: 0.75rem;
+    margin: 0 1.5rem;
+  }
+
+  /* Stats Grid */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .stat-item {
+    padding-left: 1rem;
+  }
+
+  .stat-number {
+    font-size: clamp(2rem, 6vw, 2.75rem);
+  }
+
+  .stat-label {
+    font-size: 0.6875rem;
+  }
+
+  /* About Section */
+  .about-statement {
+    font-size: clamp(1.65rem, 6vw, 2.75rem);
+    word-break: break-word;
+  }
+
+  .about-highlights {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .highlight-card {
+    padding: 1.25rem;
+  }
+
+  /* Projects Section (02 / SELECTED WORK) */
+  .projects-editorial-grid {
+    gap: 2.5rem;
+  }
+
+  .project-card-featured {
+    grid-template-columns: 1fr;
+    padding: 0;
+  }
+
+  .project-media-wrap {
+    min-height: auto;
+    padding: 1.25rem 1rem;
+    width: 100%;
+    max-width: 100%;
+    align-items: flex-start;
+  }
+
+  .project-badge-float {
+    position: relative;
+    top: auto;
+    left: auto;
+    display: inline-block;
+    margin-bottom: 0.85rem;
+    align-self: flex-start;
+  }
+
+  .project-mockup-featured,
+  .project-mockup-standard {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .mockup-content-body {
+    padding: 1.15rem 1rem;
+  }
+
+  .mockup-subgrid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .projects-split-row,
+  .projects-split-row.alt {
+    grid-template-columns: 1fr !important;
+    gap: 2rem;
+    width: 100%;
+  }
+
+  .project-card-split {
+    padding: 0;
+    width: 100%;
+  }
+
+  .project-card-featured .project-info-wrap,
+  .project-card-split .project-info-wrap,
+  .project-info-wrap {
+    padding: 1.5rem 1.25rem !important;
+  }
+
+  .project-title {
+    font-size: clamp(1.4rem, 6vw, 2.25rem);
+    word-break: break-word;
+  }
+
+  .project-title-split {
+    font-size: clamp(1.25rem, 5.5vw, 1.75rem);
+    word-break: break-word;
+  }
+
+  /* Expertise / Accordion */
+  .expertise-row {
+    display: grid !important;
+    grid-template-columns: auto 1fr auto !important;
+    grid-template-areas: 
+      "num name arrow"
+      "desc desc desc" !important;
+    align-items: center;
+    gap: 0.4rem 0.75rem;
+    padding: 1.35rem 0;
+  }
+
+  .exp-num {
+    grid-area: num;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .exp-name {
+    grid-area: name;
+    font-size: clamp(1rem, 4.5vw, 1.25rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+    word-break: break-word;
+    text-transform: uppercase;
+  }
+
+  .exp-arrow {
+    grid-area: arrow;
+    font-size: 1.15rem;
+    text-align: right;
+    justify-self: end;
+    display: inline-block;
+  }
+
+  .exp-desc {
+    grid-area: desc;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-top: 0.35rem;
+    padding-left: 0;
+  }
+
+  /* 04 / Toolkit Section Mobile */
+  .toolkit-categories {
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .toolkit-cat-group {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+    padding-top: 1.5rem;
+  }
+
+  .toolkit-cat-title {
+    font-size: 0.8125rem;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.25rem;
+  }
+
+  .toolkit-pill-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+    width: 100%;
+  }
+
+  .tool-pill-item {
+    padding: 0.95rem 1.15rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .tool-pill-name {
+    font-size: 0.95rem;
+  }
+
+  .tool-pill-desc {
+    font-size: 0.65rem;
+  }
+
+  /* 05 / Experience Editorial Timeline */
+  .timeline-editorial {
+    margin-top: 2.5rem;
+  }
+
+  .timeline-entry {
+    padding-left: 32px;
+    margin-bottom: 3rem;
+  }
+
+  .timeline-editorial::before {
+    left: 5px;
+  }
+
+  .timeline-entry-dot {
+    left: 0;
+    top: 6px;
+    width: 11px;
+    height: 11px;
+  }
+
+  .timeline-surface-card {
+    padding: 1.5rem 1.25rem !important;
+    border-radius: var(--radius-lg);
+  }
+
+  .timeline-role-title {
+    font-size: clamp(1.2rem, 5vw, 1.5rem);
+    word-break: break-word;
+  }
+
+  .timeline-company-name {
+    font-size: 0.85rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .timeline-contributions-list {
+    grid-template-columns: 1fr !important;
+    gap: 0.65rem;
+  }
+
+  .timeline-contrib-item {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  /* 06 / Services Grid */
+  .services-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem;
+  }
+
+  .service-card {
+    padding: 1.75rem 1.35rem;
+    min-height: auto;
+  }
+
+  .service-title {
+    word-break: break-word;
+  }
+
+  /* 07 / Notes Grid */
+  .notes-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem;
+  }
+
+  .note-card {
+    padding: 1.75rem 1.35rem;
+    min-height: auto;
+  }
+
+  .note-title {
+    word-break: break-word;
+  }
+
+  /* 08 / Contact Section Mobile */
+  .section-contact {
+    padding-bottom: 4.5rem;
+  }
+
+  .contact-editorial-layout {
+    grid-template-columns: 1fr !important;
+    gap: 3rem;
+    width: 100%;
+  }
+
+  .contact-vertical-divider {
+    display: none !important;
+  }
+
+  .contact-editorial-left {
+    width: 100%;
+  }
+
+  .contact-main-heading {
+    font-size: clamp(2rem, 8vw, 3.25rem);
+    letter-spacing: -0.035em;
+    line-height: 1;
+    word-break: break-word;
+  }
+
+  .contact-sub-statement {
+    font-size: clamp(1.15rem, 4vw, 1.5rem);
+    line-height: 1.2;
+    margin-top: 0.5rem;
+  }
+
+  .contact-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    max-width: 100%;
+    word-break: break-word;
+  }
+
+  .contact-details-grid {
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .contact-meta-label {
+    font-size: 0.6875rem;
+  }
+
+  .contact-meta-link,
+  .contact-meta-val {
+    font-size: clamp(1rem, 4vw, 1.25rem);
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .contact-social-links {
+    gap: 1.25rem;
+  }
+
+  .contact-social-link {
+    font-size: 0.8125rem;
+  }
+
+  .contact-editorial-right {
+    width: 100%;
+  }
+
+  .contact-form-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-form-tag {
+    font-size: 0.72rem;
+  }
+
+  .contact-minimal-form {
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  .minimal-form-field {
+    width: 100%;
+  }
+
+  .minimal-form-label {
+    font-size: 0.6875rem;
+  }
+
+  .minimal-form-input {
+    font-size: 1rem; /* 16px to prevent iOS auto-zoom on focus */
+    padding: 0.75rem 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .minimal-form-input::placeholder {
+    font-size: 0.875rem;
+  }
+
+  .minimal-form-textarea {
+    min-height: 90px;
+  }
+
+  .minimal-form-submit-wrap {
+    width: 100%;
+    margin-top: 0.75rem;
+  }
+
+  .contact-submit-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 1rem 1.5rem;
+    font-size: 0.8125rem;
+  }
+
+  /* Footer */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  /* AI Assistant Mobile Bottom Sheet */
+  .ai-assistant-widget {
+    bottom: 1.25rem;
+    right: 1.25rem;
+  }
+
+  .chat-fab {
+    width: 48px;
+    height: 48px;
+    font-size: 0.8125rem;
+  }
+
+  .ai-chat-window {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    max-width: 100vw;
+    height: 85vh;
+    max-height: 85vh;
+    border-radius: 20px 20px 0 0;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    margin: 0;
+  }
+
+  /* Modals on Mobile */
+  .modal-container {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    margin: 0;
+    border-radius: 0;
+    border: none;
+  }
+
+  .modal-close-btn {
+    top: 1rem;
+    right: 1rem;
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+
+  .case-study-hero,
+  .case-study-body {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .case-study-meta-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .problem-solution-cards,
+  .role-breakdown-grid,
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* Hide Desktop Custom Cursor on Touch */
+  .cursor-dot,
+  .cursor-ring {
+    display: none !important;
+  }
+}
+
+/* --- 05. Small Mobile Screens (max-width: 480px & down to 320px) --- */
+@media (max-width: 480px) {
+  :root {
+    --container-padding: 0.95rem;
+  }
+
+  .navbar-inner {
+    height: 60px;
+  }
+
+  .brand-logo {
+    font-size: 1.25rem;
+  }
+
+  .theme-toggle {
+    width: 34px;
+    height: 34px;
+    font-size: 0.95rem;
+  }
+
+  .mobile-nav-toggle {
+    width: 36px;
+    height: 36px;
+    font-size: 1.15rem;
+  }
+
+  /* Hero Section */
+  .hero-title {
+    font-size: clamp(1.2rem, 6.2vw, 1.75rem);
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+  }
+
+  .status-pill {
+    font-size: 0.625rem;
+    padding: 0.25rem 0.6rem;
+    max-width: 100%;
+  }
+
+  .hero-quick-links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  /* Stats Grid */
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .stat-item {
+    border-left: 2px solid var(--border-primary);
+    padding-left: 0.75rem;
+  }
+
+  .stat-number {
+    font-size: clamp(1.75rem, 5.5vw, 2.25rem);
+  }
+
+  .stat-label {
+    font-size: 0.625rem;
+  }
+
+  /* Projects Section */
+  .project-card-featured,
+  .project-card-split {
+    border-radius: var(--radius-lg);
+  }
+
+  .project-media-wrap {
+    padding: 0.85rem 0.65rem;
+    min-height: auto;
+  }
+
+  .browser-bar {
+    padding: 0.45rem 0.65rem;
+    gap: 0.5rem;
+  }
+
+  .browser-url-pill {
+    font-size: 0.6rem;
+    padding: 0.15rem 0.5rem;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .mockup-content-body {
+    padding: 0.85rem 0.65rem;
+  }
+
+  .mockup-title {
+    font-size: 0.72rem;
+  }
+
+  .mockup-endpoint-box {
+    padding: 0.6rem 0.65rem;
+  }
+
+  .mockup-endpoint-url {
+    font-size: 0.65rem;
+    word-break: break-all;
+  }
+
+  .mockup-status-line {
+    font-size: 0.62rem;
+  }
+
+  .mockup-subgrid {
+    grid-template-columns: 1fr !important;
+    gap: 0.4rem;
+  }
+
+  .mockup-subcard {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.62rem;
+  }
+
+  .project-card-featured .project-info-wrap,
+  .project-card-split .project-info-wrap,
+  .project-info-wrap {
+    padding: 1.25rem 0.85rem !important;
+  }
+
+  .project-num-tag {
+    font-size: 0.6875rem;
+  }
+
+  .project-title {
+    font-size: clamp(1.25rem, 6vw, 1.75rem);
+    word-break: break-word;
+  }
+
+  .project-title-split {
+    font-size: clamp(1.15rem, 5.5vw, 1.45rem);
+    word-break: break-word;
+  }
+
+  .project-subtitle {
+    font-size: 0.75rem;
+  }
+
+  .project-desc {
+    font-size: 0.875rem;
+    line-height: 1.55;
+  }
+
+  .project-tech-pills {
+    gap: 0.35rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .tech-pill {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.45rem;
+  }
+
+  .project-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .project-actions .btn,
+  .project-actions .btn-text {
+    width: 100%;
+    justify-content: center;
+    padding: 0.85rem 1rem;
+    font-size: 0.75rem;
+  }
+
+  /* Toolkit Section (<= 480px) */
+  .toolkit-cat-group {
+    padding-top: 1.25rem;
+    gap: 0.75rem !important;
+  }
+
+  .tool-pill-item {
+    padding: 0.85rem 0.95rem;
+  }
+
+  .tool-pill-name {
+    font-size: 0.9rem;
+  }
+
+  .tool-pill-desc {
+    font-size: 0.625rem;
+  }
+
+  /* Experience Section (<= 480px) */
+  .timeline-entry {
+    padding-left: 24px;
+    margin-bottom: 2.25rem;
+  }
+
+  .timeline-editorial::before {
+    left: 4px;
+  }
+
+  .timeline-entry-dot {
+    left: 0;
+    top: 5px;
+    width: 9px;
+    height: 9px;
+  }
+
+  .timeline-surface-card {
+    padding: 1.25rem 0.85rem !important;
+  }
+
+  .timeline-role-title {
+    font-size: 1.15rem;
+  }
+
+  /* Case Study Meta Grid */
+  .case-study-meta-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* Contact Section (<= 480px) */
+  .section-contact {
+    padding-bottom: 3.5rem;
+  }
+
+  .contact-editorial-layout {
+    gap: 2.25rem !important;
+  }
+
+  .contact-main-heading {
+    font-size: clamp(1.75rem, 7.5vw, 2.35rem) !important;
+    letter-spacing: -0.03em;
+  }
+
+  .contact-sub-statement {
+    font-size: 1.05rem !important;
+  }
+
+  .contact-description {
+    font-size: 0.875rem !important;
+    margin-bottom: 1.75rem !important;
+  }
+
+  .contact-details-grid {
+    gap: 1.25rem !important;
+    margin-bottom: 1.75rem !important;
+  }
+
+  .contact-meta-link,
+  .contact-meta-val {
+    font-size: 1rem !important;
+    word-break: break-all !important;
+  }
+
+  .contact-social-links {
+    gap: 1rem !important;
+  }
+
+  .contact-social-link {
+    font-size: 0.75rem !important;
+  }
+
+  .contact-minimal-form {
+    gap: 1.25rem !important;
+  }
+
+  .minimal-form-input {
+    font-size: 0.95rem !important;
+    padding: 0.65rem 0 !important;
+  }
+
+  .minimal-form-textarea {
+    min-height: 80px !important;
+  }
+
+  .contact-submit-btn {
+    padding: 0.9rem 1.25rem !important;
+    font-size: 0.75rem !important;
+  }
+
+  /* Fullscreen Mobile Menu Overlay */
+  .mobile-menu-overlay {
+    padding: 5rem 1.25rem 2.5rem;
+    overflow-y: auto;
+  }
+
+  .mobile-nav-link {
+    font-size: clamp(1.5rem, 6.5vw, 2rem);
+  }
+
+  /* Article & Single Project Pages */
+  .article-header {
+    padding-top: 5.5rem;
+    padding-bottom: 2rem;
+  }
+
+  .cv-page {
+    padding: 1.25rem 0.85rem;
+    margin-top: 5.5rem;
+  }
+}
+
+/* --- 06. Extra Small Screens (320px - 360px) --- */
+@media (max-width: 360px) {
+  :root {
+    --container-padding: 0.75rem;
+  }
+
+  .hero-title {
+    font-size: clamp(1.05rem, 5.8vw, 1.35rem);
+    letter-spacing: -0.02em;
+  }
+
+  .section-title {
+    font-size: clamp(1.4rem, 6.2vw, 1.75rem);
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .stat-number {
+    font-size: 1.75rem;
+  }
+
+  .project-media-wrap {
+    padding: 0.65rem 0.45rem;
+  }
+
+  .mockup-content-body {
+    padding: 0.65rem 0.45rem;
+  }
+
+  .mockup-endpoint-box {
+    padding: 0.5rem 0.45rem;
+  }
+
+  .mockup-subcard {
+    padding: 0.45rem;
+    font-size: 0.58rem;
+  }
+
+  .project-card-featured .project-info-wrap,
+  .project-card-split .project-info-wrap,
+  .project-info-wrap {
+    padding: 1rem 0.65rem !important;
+  }
+
+  .project-title {
+    font-size: 1.15rem;
+  }
+
+  .project-title-split {
+    font-size: 1.05rem;
+  }
+
+  .btn {
+    padding: 0.75rem 0.85rem;
+    font-size: 0.7rem;
+  }
+
+  .exp-name {
+    font-size: 0.95rem;
+  }
+
+  .exp-desc {
+    font-size: 0.8125rem;
+  }
+
+  /* Toolkit Extra Small */
+  .tool-pill-item {
+    padding: 0.75rem 0.8rem;
+  }
+
+  .tool-pill-left {
+    gap: 0.6rem;
+  }
+
+  .tool-pill-icon {
+    font-size: 1rem;
+  }
+
+  .tool-pill-name {
+    font-size: 0.85rem;
+  }
+
+  .tool-pill-desc {
+    font-size: 0.58rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* Timeline Extra Small */
+  .timeline-surface-card {
+    padding: 1rem 0.65rem !important;
+  }
+
+  .timeline-contrib-item {
+    font-size: 0.8rem;
+  }
+
+  /* Contact Extra Small (320px - 360px) */
+  .contact-main-heading {
+    font-size: clamp(1.45rem, 6.8vw, 1.75rem) !important;
+  }
+
+  .contact-sub-statement {
+    font-size: 0.95rem !important;
+  }
+
+  .contact-description {
+    font-size: 0.8125rem !important;
+    line-height: 1.5 !important;
+  }
+
+  .contact-meta-link,
+  .contact-meta-val {
+    font-size: 0.875rem !important;
+  }
+
+  .contact-social-link {
+    font-size: 0.7rem !important;
+  }
+
+  .minimal-form-input {
+    font-size: 0.875rem !important;
+    padding: 0.55rem 0 !important;
+  }
+
+  .minimal-form-input::placeholder {
+    font-size: 0.8rem !important;
+  }
+
+  .contact-submit-btn {
+    padding: 0.8rem 1rem !important;
+    font-size: 0.7rem !important;
+  }
+}
