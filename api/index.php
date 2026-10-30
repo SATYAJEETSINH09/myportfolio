@@ -47,6 +47,14 @@ if ($isVercel) {
     putenv('APP_PACKAGES_CACHE=/tmp/bootstrap/cache/packages.php');
     putenv('APP_ROUTES_CACHE=/tmp/bootstrap/cache/routes-v7.php');
     putenv('APP_SERVICES_CACHE=/tmp/bootstrap/cache/services.php');
+
+    // Ensure bundled CA cert is exposed for TiDB Cloud TLS verification
+    $bundledCa = dirname(__DIR__) . '/database/certs/ca.pem';
+    if (file_exists($bundledCa) && !getenv('MYSQL_ATTR_SSL_CA')) {
+        putenv("MYSQL_ATTR_SSL_CA={$bundledCa}");
+        $_ENV['MYSQL_ATTR_SSL_CA'] = $bundledCa;
+        $_SERVER['MYSQL_ATTR_SSL_CA'] = $bundledCa;
+    }
 }
 
 // Determine if the application is in maintenance mode...

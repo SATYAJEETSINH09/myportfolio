@@ -49,7 +49,7 @@ return [
             'url' => env('DB_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'laravel'),
+            'database' => (env('DB_DATABASE') === 'sys' || !env('DB_DATABASE')) && (str_contains((string) env('DB_HOST'), 'tidbcloud.com') || (int) env('DB_PORT') === 4000) ? 'portfolio_db' : env('DB_DATABASE', 'laravel'),
             'username' => env('DB_USERNAME', 'root'),
             'password' => env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
@@ -61,24 +61,37 @@ return [
             'engine' => null,
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 PDO::MYSQL_ATTR_SSL_CA => (function () {
-                    // 1. Explicitly configured CA in .env / Vercel
+                    // 1. Explicitly configured CA in .env / Vercel (if readable)
                     if ($ca = env('MYSQL_ATTR_SSL_CA', env('DB_SSL_CA'))) {
-                        return $ca;
+                        if (is_readable($ca)) {
+                            return $ca;
+                        }
                     }
 
                     // 2. Auto-detect SSL requirement for TiDB Cloud or when DB_SSL is requested
                     $isTiDB = str_contains((string) env('DB_HOST'), 'tidbcloud.com') || (int) env('DB_PORT') === 4000;
                     if (env('DB_SSL') || env('TIDB_SSL') || $isTiDB) {
-                        // Check PHP runtime configured CA (Windows WAMP/XAMPP, macOS, Linux)
+                        // Priority A: Project-bundled CA certificate (guaranteed in all deployments)
+                        $bundledCa = base_path('database/certs/ca.pem');
+                        if (is_readable($bundledCa)) {
+                            return $bundledCa;
+                        }
+
+                        // Priority B: PHP runtime configured CA (Windows WAMP/XAMPP, macOS, Linux)
                         if (($phpCa = ini_get('openssl.cafile') ?: ini_get('curl.cainfo')) && is_readable($phpCa)) {
                             return $phpCa;
                         }
-                        // Check standard Linux / Vercel AWS Lambda locations
-                        if (is_readable('/etc/pki/tls/certs/ca-bundle.crt')) {
-                            return '/etc/pki/tls/certs/ca-bundle.crt';
-                        }
-                        if (is_readable('/etc/ssl/certs/ca-certificates.crt')) {
-                            return '/etc/ssl/certs/ca-certificates.crt';
+
+                        // Priority C: Standard Linux / Vercel AWS Lambda system paths
+                        foreach ([
+                            '/etc/pki/tls/certs/ca-bundle.crt',
+                            '/etc/ssl/certs/ca-certificates.crt',
+                            '/etc/ssl/cert.pem',
+                            '/usr/local/share/certs/ca-root-nss.crt',
+                        ] as $systemCa) {
+                            if (is_readable($systemCa)) {
+                                return $systemCa;
+                            }
                         }
                     }
 
@@ -92,7 +105,7 @@ return [
             'url' => env('DB_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'laravel'),
+            'database' => (env('DB_DATABASE') === 'sys' || !env('DB_DATABASE')) && (str_contains((string) env('DB_HOST'), 'tidbcloud.com') || (int) env('DB_PORT') === 4000) ? 'portfolio_db' : env('DB_DATABASE', 'laravel'),
             'username' => env('DB_USERNAME', 'root'),
             'password' => env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
@@ -104,24 +117,37 @@ return [
             'engine' => null,
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 PDO::MYSQL_ATTR_SSL_CA => (function () {
-                    // 1. Explicitly configured CA in .env / Vercel
+                    // 1. Explicitly configured CA in .env / Vercel (if readable)
                     if ($ca = env('MYSQL_ATTR_SSL_CA', env('DB_SSL_CA'))) {
-                        return $ca;
+                        if (is_readable($ca)) {
+                            return $ca;
+                        }
                     }
 
                     // 2. Auto-detect SSL requirement for TiDB Cloud or when DB_SSL is requested
                     $isTiDB = str_contains((string) env('DB_HOST'), 'tidbcloud.com') || (int) env('DB_PORT') === 4000;
                     if (env('DB_SSL') || env('TIDB_SSL') || $isTiDB) {
-                        // Check PHP runtime configured CA (Windows WAMP/XAMPP, macOS, Linux)
+                        // Priority A: Project-bundled CA certificate (guaranteed in all deployments)
+                        $bundledCa = base_path('database/certs/ca.pem');
+                        if (is_readable($bundledCa)) {
+                            return $bundledCa;
+                        }
+
+                        // Priority B: PHP runtime configured CA (Windows WAMP/XAMPP, macOS, Linux)
                         if (($phpCa = ini_get('openssl.cafile') ?: ini_get('curl.cainfo')) && is_readable($phpCa)) {
                             return $phpCa;
                         }
-                        // Check standard Linux / Vercel AWS Lambda locations
-                        if (is_readable('/etc/pki/tls/certs/ca-bundle.crt')) {
-                            return '/etc/pki/tls/certs/ca-bundle.crt';
-                        }
-                        if (is_readable('/etc/ssl/certs/ca-certificates.crt')) {
-                            return '/etc/ssl/certs/ca-certificates.crt';
+
+                        // Priority C: Standard Linux / Vercel AWS Lambda system paths
+                        foreach ([
+                            '/etc/pki/tls/certs/ca-bundle.crt',
+                            '/etc/ssl/certs/ca-certificates.crt',
+                            '/etc/ssl/cert.pem',
+                            '/usr/local/share/certs/ca-root-nss.crt',
+                        ] as $systemCa) {
+                            if (is_readable($systemCa)) {
+                                return $systemCa;
+                            }
                         }
                     }
 
