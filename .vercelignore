@@ -1,0 +1,36 @@
+# Composer & Node dependencies (built during deployment)
+/vendor
+/node_modules
+
+# Local Environment & Secrets
+.env
+.env.*
+!.env.example
+
+# Version Control & IDEs
+.git
+.github
+.vscode
+.idea
+.cursor
+.ai
+
+# Automated Tests & Caches
+/tests
+phpunit.xml
+.phpunit.result.cache
+.phpunit.cache
+
+# Local Storage & Logs
+/storage/logs/*
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+!/storage/**/.gitignore
+
+# Documentation & AI guides
+README.md
+AGENTS.md
+CLAUDE.md
+boost.json
+
