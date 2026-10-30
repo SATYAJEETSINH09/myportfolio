@@ -60,7 +60,30 @@ return [
             'strict' => true,
             'engine' => null,
             'options' => extension_loaded('pdo_mysql') ? array_filter([
-                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA', env('DB_SSL_CA', (env('DB_SSL') || env('TIDB_SSL')) ? (is_readable('/etc/pki/tls/certs/ca-bundle.crt') ? '/etc/pki/tls/certs/ca-bundle.crt' : (is_readable('/etc/ssl/certs/ca-certificates.crt') ? '/etc/ssl/certs/ca-certificates.crt' : null)) : null)),
+                PDO::MYSQL_ATTR_SSL_CA => (function () {
+                    // 1. Explicitly configured CA in .env / Vercel
+                    if ($ca = env('MYSQL_ATTR_SSL_CA', env('DB_SSL_CA'))) {
+                        return $ca;
+                    }
+
+                    // 2. Auto-detect SSL requirement for TiDB Cloud or when DB_SSL is requested
+                    $isTiDB = str_contains((string) env('DB_HOST'), 'tidbcloud.com') || (int) env('DB_PORT') === 4000;
+                    if (env('DB_SSL') || env('TIDB_SSL') || $isTiDB) {
+                        // Check PHP runtime configured CA (Windows WAMP/XAMPP, macOS, Linux)
+                        if (($phpCa = ini_get('openssl.cafile') ?: ini_get('curl.cainfo')) && is_readable($phpCa)) {
+                            return $phpCa;
+                        }
+                        // Check standard Linux / Vercel AWS Lambda locations
+                        if (is_readable('/etc/pki/tls/certs/ca-bundle.crt')) {
+                            return '/etc/pki/tls/certs/ca-bundle.crt';
+                        }
+                        if (is_readable('/etc/ssl/certs/ca-certificates.crt')) {
+                            return '/etc/ssl/certs/ca-certificates.crt';
+                        }
+                    }
+
+                    return null;
+                })(),
             ]) : [],
         ],
 
@@ -80,7 +103,30 @@ return [
             'strict' => true,
             'engine' => null,
             'options' => extension_loaded('pdo_mysql') ? array_filter([
-                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA', env('DB_SSL_CA', (env('DB_SSL') || env('TIDB_SSL')) ? (is_readable('/etc/pki/tls/certs/ca-bundle.crt') ? '/etc/pki/tls/certs/ca-bundle.crt' : (is_readable('/etc/ssl/certs/ca-certificates.crt') ? '/etc/ssl/certs/ca-certificates.crt' : null)) : null)),
+                PDO::MYSQL_ATTR_SSL_CA => (function () {
+                    // 1. Explicitly configured CA in .env / Vercel
+                    if ($ca = env('MYSQL_ATTR_SSL_CA', env('DB_SSL_CA'))) {
+                        return $ca;
+                    }
+
+                    // 2. Auto-detect SSL requirement for TiDB Cloud or when DB_SSL is requested
+                    $isTiDB = str_contains((string) env('DB_HOST'), 'tidbcloud.com') || (int) env('DB_PORT') === 4000;
+                    if (env('DB_SSL') || env('TIDB_SSL') || $isTiDB) {
+                        // Check PHP runtime configured CA (Windows WAMP/XAMPP, macOS, Linux)
+                        if (($phpCa = ini_get('openssl.cafile') ?: ini_get('curl.cainfo')) && is_readable($phpCa)) {
+                            return $phpCa;
+                        }
+                        // Check standard Linux / Vercel AWS Lambda locations
+                        if (is_readable('/etc/pki/tls/certs/ca-bundle.crt')) {
+                            return '/etc/pki/tls/certs/ca-bundle.crt';
+                        }
+                        if (is_readable('/etc/ssl/certs/ca-certificates.crt')) {
+                            return '/etc/ssl/certs/ca-certificates.crt';
+                        }
+                    }
+
+                    return null;
+                })(),
             ]) : [],
         ],
 
