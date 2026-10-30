@@ -73,6 +73,23 @@ class Project extends Model
 
     public function scopeOrdered($query)
     {
-        return $query->orderBy('sort_order')->orderBy('id');
+        return $query->orderBy('sort_order', 'asc')->orderBy('id', 'asc');
+    }
+
+    public function getCoverImageUrlAttribute(): ?string
+    {
+        if (!$this->cover_image) {
+            return null;
+        }
+
+        if (\Illuminate\Support\Str::startsWith($this->cover_image, ['http://', 'https://'])) {
+            return $this->cover_image;
+        }
+
+        if (\Illuminate\Support\Str::startsWith($this->cover_image, 'projects/')) {
+            return asset('storage/' . $this->cover_image);
+        }
+
+        return asset($this->cover_image);
     }
 }

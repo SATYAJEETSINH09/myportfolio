@@ -18,11 +18,18 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database with verified portfolio data.
-     */
     public function run(): void
     {
+        // 0. Seed Admin User
+        \App\Models\User::updateOrCreate(
+            ['email' => 'admin@satyajeet.dev'],
+            [
+                'name' => 'Satyajeetsinh Dodiya',
+                'password' => \Illuminate\Support\Facades\Hash::make('admin123'),
+                'email_verified_at' => now(),
+            ]
+        );
+
         // 1. Seed Site Settings
         $settings = [
             'site_name' => 'Satyajeetsinh Dodiya',

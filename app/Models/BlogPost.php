@@ -33,7 +33,23 @@ class BlogPost extends Model
     public function scopePublished($query)
     {
         return $query->where('status', 'published')
-            ->whereNotNull('published_at')
             ->orderBy('published_at', 'desc');
+    }
+
+    public function getCoverImageUrlAttribute(): ?string
+    {
+        if (!$this->cover_image) {
+            return null;
+        }
+
+        if (\Illuminate\Support\Str::startsWith($this->cover_image, ['http://', 'https://'])) {
+            return $this->cover_image;
+        }
+
+        if (\Illuminate\Support\Str::startsWith($this->cover_image, 'blog/')) {
+            return asset('storage/' . $this->cover_image);
+        }
+
+        return asset($this->cover_image);
     }
 }
