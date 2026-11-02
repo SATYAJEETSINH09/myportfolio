@@ -366,45 +366,29 @@ class DatabaseSeeder extends Seeder
         $exp1 = Experience::updateOrCreate(
             ['company' => 'Binstellar Technologies Pvt. Ltd.', 'position' => 'Backend Developer'],
             [
-                'period' => '2025 — PRESENT',
-                'stack' => 'Laravel · PHP · MySQL · REST API · Sanctum · FCM',
+                'period' => 'March 2025 — Present',
+                'stack' => 'Laravel · PHP · MySQL · REST API · JWT · Postman',
                 'is_current' => true,
-                'description' => 'Develop and maintain production backend systems, scalable REST APIs, and administrative workflows supporting high-volume web and mobile client applications.',
-                'location' => 'Ahmedabad, Gujarat, India',
+                'description' => 'Built and maintained production RESTful APIs in Laravel powering live education and healthcare platforms, securing multi-user access and tuning database performance.',
+                'location' => 'India',
                 'sort_order' => 1,
             ]
         );
+        $exp1->points()->delete();
         $exp1Points = [
-            'REST API Development & Schema Optimization for multi-platform clients.',
-            'Authentication & Authorization using Laravel Sanctum and fine-grained RBAC.',
-            'Modular back-office admin modules with live reporting and audit logs.',
-            'Relational database design, composite indexing, and query tuning.',
-            'Third-party integrations with Firebase Cloud Messaging (FCM) and payment gateways.',
-            'N+1 query elimination and response time profiling.',
+            'Built and maintained RESTful APIs in Laravel powering live education and healthcare platforms',
+            'Implemented JWT-based authentication and role-based authorization to secure multi-user access',
+            'Designed and developed scalable admin panel modules for data management and reporting',
+            'Optimized MySQL queries and database indexing, improving API response times',
+            'Tested and validated API endpoints using Postman prior to frontend integration',
+            'Collaborated with frontend engineers and cross-functional teams on API integration, following Laravel and Git best practices',
         ];
         foreach ($exp1Points as $idx => $pt) {
-            ExperiencePoint::updateOrCreate(['experience_id' => $exp1->id, 'text' => $pt], ['sort_order' => $idx + 1]);
+            ExperiencePoint::create(['experience_id' => $exp1->id, 'text' => $pt, 'sort_order' => $idx + 1]);
         }
 
-        $exp2 = Experience::updateOrCreate(
-            ['company' => 'Binstellar Technologies Pvt. Ltd.', 'position' => 'MERN Stack Intern'],
-            [
-                'period' => '2025',
-                'stack' => 'React · Node.js · Express · MongoDB',
-                'is_current' => false,
-                'description' => 'Engineered ShopSphere — a full stack e-commerce web platform with responsive user interface, JWT authentication, and dual payment gateway integrations.',
-                'location' => 'Ahmedabad, Gujarat, India',
-                'sort_order' => 2,
-            ]
-        );
-        $exp2Points = [
-            'Built full stack e-commerce web application with cart session persistence.',
-            'Implemented secure RESTful endpoints with Express, JWT, and payment webhooks.',
-            'Participated in code reviews, database schema iterations, and Git collaboration workflows.',
-        ];
-        foreach ($exp2Points as $idx => $pt) {
-            ExperiencePoint::updateOrCreate(['experience_id' => $exp2->id, 'text' => $pt], ['sort_order' => $idx + 1]);
-        }
+        // Delete any existing MERN Stack Intern experience
+        Experience::where('position', 'like', '%Intern%')->delete();
 
         // 5. Seed Skills
         $skillsData = [

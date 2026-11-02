@@ -21,8 +21,8 @@
   {{-- 04 / Technical Toolkit --}}
   <x-toolkit :skills="$skills" />
 
-  {{-- 05 / Career Experience Timeline --}}
-  <x-experience :experiences="$experiences" />
+  {{-- 05 / Career & Academic Timeline --}}
+  <x-experience :experiences="$experiences" :educations="$educations" />
 
   {{-- 06 / Services Invert Cards --}}
   <x-services :services="$services" />

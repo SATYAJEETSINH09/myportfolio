@@ -38,6 +38,42 @@ class PortfolioController extends Controller
             ->ordered()
             ->get();
 
+        $educations = [
+            [
+                'degree' => 'Bachelor of Engineering in Computer Engineering',
+                'field' => 'Computer Engineering',
+                'institution' => 'Government Engineering College, Modasa',
+                'location' => 'Modasa, India',
+                'period' => '2020 — 2025',
+                'grade' => 'CGPA: 7.52',
+                'badge' => 'B.E. DEGREE · CGPA: 7.52',
+                'badge_type' => 'college',
+                'description' => 'Bachelor of Engineering in Computer Engineering from Government Engineering College, Modasa with 7.52 CGPA, focusing on system architecture, database engineering, and software development.',
+                'skills' => ['Computer Engineering', 'DBMS & MySQL', 'Data Structures', 'OOP', 'Web Architecture', 'CGPA: 7.52'],
+                'highlights' => [
+                    'Graduated with CGPA 7.52 in Bachelor of Engineering (Computer Engineering).',
+                    'Specialized in Database Management Systems (MySQL), Data Structures & Algorithms, and System Architecture.',
+                    'Engineered capstone projects applying full-stack and backend engineering principles.',
+                ],
+            ],
+            [
+                'degree' => 'Higher Secondary Certificate — XII (GSEB)',
+                'field' => 'Science & General Stream',
+                'institution' => 'Shree D.A. Vidhya Mandir',
+                'location' => 'Dhandhuka, India',
+                'period' => '2020',
+                'grade' => 'Score: 64%',
+                'badge' => 'XII (GSEB) · 64%',
+                'badge_type' => 'school',
+                'description' => 'Completed Higher Secondary Certificate (Class XII) under Gujarat Secondary and Higher Secondary Education Board (GSEB) at Shree D.A. Vidhya Mandir with 64%.',
+                'skills' => ['Mathematics', 'Computer Studies', 'Science & Logic', 'Score: 64%'],
+                'highlights' => [
+                    'Scored 64% in Class XII (GSEB) with strong grounding in mathematics and science.',
+                    'Built foundational knowledge in discrete logic, algebra, and computational problem solving.',
+                ],
+            ],
+        ];
+
         $services = Service::active()->get();
 
         $blogPosts = BlogPost::published()
@@ -51,6 +87,7 @@ class PortfolioController extends Controller
             'projects',
             'skills',
             'experiences',
+            'educations',
             'services',
             'blogPosts'
         ));

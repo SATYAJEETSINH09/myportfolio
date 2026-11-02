@@ -526,9 +526,10 @@ img, svg, video, canvas, iframe {
     height: 11px;
   }
 
-  .timeline-surface-card {
-    padding: 1.5rem 1.25rem !important;
-    border-radius: var(--radius-lg);
+  .timeline-surface-card,
+  .timeline-compact-card {
+    padding: 1.1rem 1.15rem !important;
+    border-radius: var(--radius-md);
   }
 
   .timeline-role-title {
@@ -993,8 +994,9 @@ img, svg, video, canvas, iframe {
     height: 9px;
   }
 
-  .timeline-surface-card {
-    padding: 1.25rem 0.85rem !important;
+  .timeline-surface-card,
+  .timeline-compact-card {
+    padding: 1rem 0.85rem !important;
   }
 
   .timeline-role-title {

@@ -88,24 +88,36 @@
         <div style="margin-bottom:1.75rem;">
           <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap;">
             <div style="font-weight:700; font-size:1.05rem; color:var(--text-primary);">Backend Developer — Binstellar Technologies Pvt. Ltd.</div>
-            <div style="font-family:var(--font-mono); font-size:0.85rem; color:var(--text-muted);">2025 — Present · Ahmedabad, India</div>
+            <div style="font-family:var(--font-mono); font-size:0.85rem; color:var(--text-muted);">March 2025 — Present · India</div>
           </div>
           <ul style="margin-top:0.75rem; padding-left:1.25rem; color:var(--text-secondary); line-height:1.7; font-size:0.925rem;">
-            <li>Architected and implemented 40+ RESTful API endpoints for Dare Play multi-school gamification portal.</li>
-            <li>Engineered GoMeds247 pharmacy backend with dual-role authentication and prescription approval pipelines.</li>
-            <li>Implemented Klean Health appointment booking system with optimistic slot locking preventing double-bookings.</li>
-            <li>Optimized heavy Eloquent queries resulting in 45% lower database latency under peak loads.</li>
+            <li>Built and maintained RESTful APIs in Laravel powering live education and healthcare platforms.</li>
+            <li>Implemented JWT-based authentication and role-based authorization to secure multi-user access.</li>
+            <li>Designed and developed scalable admin panel modules for data management and reporting.</li>
+            <li>Optimized MySQL queries and database indexing, improving API response times.</li>
+            <li>Tested and validated API endpoints using Postman prior to frontend integration.</li>
+            <li>Collaborated with frontend engineers and cross-functional teams on API integration, following Laravel and Git best practices.</li>
           </ul>
         </div>
       </div>
 
       <div>
         <h2 style="font-family:var(--font-mono); font-size:1.1rem; color:var(--text-primary); border-bottom:1px solid var(--border-primary); padding-bottom:0.5rem; margin-bottom:1rem;">
-          // 04. EDUCATION & CERTIFICATIONS
+          // 04. EDUCATION & ACADEMIC BACKGROUND
         </h2>
-        <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap;">
-          <div style="font-weight:700; color:var(--text-primary);">Bachelor of Computer Applications (BCA) / Computer Science</div>
-          <div style="font-family:var(--font-mono); font-size:0.85rem; color:var(--text-muted);">Gujarat, India</div>
+        <div style="margin-bottom:1.25rem;">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; margin-bottom:0.25rem;">
+            <div style="font-weight:700; color:var(--text-primary);">Bachelor of Engineering in Computer Engineering (CGPA: 7.52)</div>
+            <div style="font-family:var(--font-mono); font-size:0.85rem; color:var(--text-muted);">2020 — 2025 · Modasa, India</div>
+          </div>
+          <div style="font-size:0.85rem; color:var(--text-secondary);">Government Engineering College, Modasa · Core studies in Database Systems, Operating Systems, Data Structures & Software Engineering.</div>
+        </div>
+        <div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; margin-bottom:0.25rem;">
+            <div style="font-weight:700; color:var(--text-primary);">Class XII (GSEB) — 64%</div>
+            <div style="font-family:var(--font-mono); font-size:0.85rem; color:var(--text-muted);">2020 · Dhandhuka, India</div>
+          </div>
+          <div style="font-size:0.85rem; color:var(--text-secondary);">Shree D.A. Vidhya Mandir · Gujarat Secondary and Higher Secondary Education Board (GSEB).</div>
         </div>
       </div>
     </div>
