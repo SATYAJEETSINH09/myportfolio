@@ -29,6 +29,7 @@
   <link rel="stylesheet" href="{{ asset('css/components.css') }}">
   <link rel="stylesheet" href="{{ asset('css/sections.css') }}">
   <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/case-study.css') }}">
 
   @stack('styles')
 </head>

@@ -3,7 +3,6 @@
 @if($isFeatured)
   <article class="project-card-featured reveal-on-scroll" data-cursor-view>
     <div class="project-media-wrap">
-      <span class="project-badge-float">FEATURED BACKEND SYSTEM</span>
       <div class="browser-mockup-frame project-mockup-featured">
         <div class="browser-bar">
           <div class="terminal-dots">
@@ -47,9 +46,6 @@
       <div class="project-actions">
         <a href="{{ route('projects.show', $project) }}" class="btn btn-primary">
           VIEW CASE STUDY <span class="btn-arrow">↗</span>
-        </a>
-        <a href="{{ route('projects.show', $project) }}" class="btn btn-secondary">
-          SYSTEM DIAGRAM <span class="btn-arrow">↗</span>
         </a>
       </div>
     </div>
@@ -100,9 +96,6 @@
       <div class="project-actions">
         <a href="{{ route('projects.show', $project) }}" class="btn btn-primary">
           VIEW CASE STUDY <span class="btn-arrow">↗</span>
-        </a>
-        <a href="{{ route('projects.show', $project) }}" class="btn btn-secondary">
-          SYSTEM DIAGRAM <span class="btn-arrow">↗</span>
         </a>
       </div>
     </div>

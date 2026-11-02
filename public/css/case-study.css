@@ -1,0 +1,716 @@
+/**
+ * ====================================================================
+ * CASE-STUDY.CSS — Premium Engineering Portfolio Case Study System
+ * Clean white/off-white background, black typography, subtle blue accents
+ * Inspired by modern minimal engineering case studies
+ * ====================================================================
+ */
+
+.cs-article {
+  /* Minimal Design Tokens */
+  --cs-bg: #FFFFFF;
+  --cs-bg-subtle: #FAFAFA;
+  --cs-bg-card: #F9FAFB;
+  --cs-bg-card-hover: #F3F4F6;
+  --cs-text-title: #111827;
+  --cs-text-body: #374151;
+  --cs-text-muted: #6B7280;
+  --cs-border: #E5E7EB;
+  --cs-border-subtle: #F3F4F6;
+  --cs-accent: #2563EB;
+  --cs-accent-light: #EFF6FF;
+  --cs-accent-border: #BFDBFE;
+
+  background-color: var(--cs-bg);
+  color: var(--cs-text-body);
+  padding: 6.5rem 0 5rem;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+[data-theme="dark"] .cs-article {
+  --cs-bg: #09090B;
+  --cs-bg-subtle: #111114;
+  --cs-bg-card: #141418;
+  --cs-bg-card-hover: #1A1A20;
+  --cs-text-title: #F3F4F6;
+  --cs-text-body: #D1D5DB;
+  --cs-text-muted: #9CA3AF;
+  --cs-border: #27272A;
+  --cs-border-subtle: #1F1F23;
+  --cs-accent: #3B82F6;
+  --cs-accent-light: rgba(59, 130, 246, 0.1);
+  --cs-accent-border: rgba(59, 130, 246, 0.25);
+}
+
+/* Centered Reading Width Container */
+.cs-container {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* -------------------------------------------------------------
+   00. Top Breadcrumb & Tag
+   ------------------------------------------------------------- */
+.cs-breadcrumb-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.cs-back-link {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--cs-text-muted);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  transition: color var(--transition-fast);
+}
+
+.cs-back-link:hover {
+  color: var(--cs-accent);
+}
+
+.cs-category-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--cs-accent);
+  background: var(--cs-accent-light);
+  border: 1px solid var(--cs-accent-border);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+}
+
+/* -------------------------------------------------------------
+   01. Project Header
+   ------------------------------------------------------------- */
+.cs-header-wrap {
+  margin-bottom: 3.5rem;
+}
+
+.cs-project-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.3rem, 5vw, 3.4rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+  color: var(--cs-text-title);
+  margin-bottom: 0.75rem;
+}
+
+.cs-project-tagline {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--cs-text-muted);
+  margin-bottom: 1.75rem;
+  max-width: 820px;
+}
+
+/* Header Metadata Strip */
+.cs-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  padding: 1.35rem 0;
+  border-top: 1px solid var(--cs-border);
+  border-bottom: 1px solid var(--cs-border);
+  margin-bottom: 1.5rem;
+}
+
+.cs-meta-item .label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--cs-text-muted);
+  margin-bottom: 0.35rem;
+}
+
+.cs-meta-item .val {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--cs-text-title);
+}
+
+.cs-status-indicator {
+  color: #10B981;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* Action Links (Live Demo / GitHub) */
+.cs-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.75rem;
+}
+
+.cs-action-btn {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.45rem 0.95rem;
+  border-radius: 6px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all var(--transition-fast);
+}
+
+.cs-action-btn.primary {
+  background: var(--cs-accent);
+  color: #FFFFFF;
+  border: 1px solid var(--cs-accent);
+}
+
+.cs-action-btn.primary:hover {
+  background: #1D4ED8;
+  border-color: #1D4ED8;
+  transform: translateY(-1px);
+}
+
+.cs-action-btn.secondary {
+  background: var(--cs-bg-card);
+  color: var(--cs-text-title);
+  border: 1px solid var(--cs-border);
+}
+
+.cs-action-btn.secondary:hover {
+  background: var(--cs-bg-card-hover);
+  border-color: var(--cs-text-title);
+  transform: translateY(-1px);
+}
+
+/* Header Tech Badges */
+.cs-header-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.cs-header-tech-chip {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--cs-text-body);
+  background: var(--cs-bg-subtle);
+  border: 1px solid var(--cs-border);
+  padding: 0.3rem 0.75rem;
+  border-radius: 6px;
+}
+
+/* Hero Preview Banner */
+.cs-hero-preview {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--cs-border);
+  background: #09090B;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.cs-hero-preview img,
+.cs-hero-preview svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* -------------------------------------------------------------
+   Section Universal Structure
+   ------------------------------------------------------------- */
+.cs-section {
+  padding-top: 3.5rem;
+  margin-top: 3.5rem;
+  border-top: 1px solid var(--cs-border);
+}
+
+.cs-section-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cs-accent);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cs-section-heading {
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--cs-text-title);
+  margin-bottom: 1.5rem;
+}
+
+/* -------------------------------------------------------------
+   02. Project Overview (Fluid Editorial Layout)
+   ------------------------------------------------------------- */
+.cs-overview-lead {
+  border-left: 3px solid var(--cs-accent);
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.cs-overview-lead p {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--cs-text-title);
+  font-weight: 500;
+  margin: 0;
+}
+
+.cs-overview-body p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--cs-text-body);
+  margin-bottom: 1.15rem;
+}
+
+.cs-overview-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* -------------------------------------------------------------
+   03. Problem & Solution (2-Column Split Layout)
+   ------------------------------------------------------------- */
+.cs-prob-sol-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.cs-prob-sol-col {
+  background: var(--cs-bg-card);
+  border: 1px solid var(--cs-border);
+  border-radius: 10px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  transition: border-color var(--transition-fast);
+}
+
+.cs-prob-sol-col.problem {
+  border-top: 3px solid #EF4444;
+}
+
+.cs-prob-sol-col.solution {
+  border-top: 3px solid #10B981;
+}
+
+.cs-prob-sol-tag {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  align-self: flex-start;
+  margin-bottom: 1rem;
+}
+
+.cs-prob-sol-col.problem .cs-prob-sol-tag {
+  background: rgba(239, 68, 68, 0.1);
+  color: #EF4444;
+}
+
+.cs-prob-sol-col.solution .cs-prob-sol-tag {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10B981;
+}
+
+.cs-prob-sol-col h4 {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--cs-text-title);
+  margin-bottom: 0.65rem;
+  line-height: 1.4;
+}
+
+.cs-prob-sol-col p {
+  font-size: 0.95rem;
+  line-height: 1.68;
+  color: var(--cs-text-body);
+  margin: 0;
+}
+
+/* -------------------------------------------------------------
+   04. System Architecture / Workflow Diagram
+   ------------------------------------------------------------- */
+.cs-workflow-wrap {
+  background: var(--cs-bg-card);
+  border: 1px solid var(--cs-border);
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+}
+
+.cs-workflow-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  position: relative;
+}
+
+.cs-workflow-card {
+  background: var(--cs-bg);
+  border: 1px solid var(--cs-border);
+  border-radius: 8px;
+  padding: 1.25rem 1rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: border-color var(--transition-fast);
+}
+
+.cs-workflow-card:hover {
+  border-color: var(--cs-accent);
+}
+
+.cs-workflow-step-num {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--cs-accent);
+  background: var(--cs-accent-light);
+  border: 1px solid var(--cs-accent-border);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+
+.cs-workflow-title {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--cs-text-title);
+  margin-bottom: 0.35rem;
+  line-height: 1.35;
+}
+
+.cs-workflow-desc {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--cs-text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Workflow Arrow Indicator between cards */
+.cs-workflow-card:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  right: -14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.9rem;
+  color: var(--cs-accent);
+  font-weight: 700;
+  z-index: 2;
+}
+
+/* -------------------------------------------------------------
+   05. Key Features (Clean Minimal Grid)
+   ------------------------------------------------------------- */
+.cs-features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.cs-feature-card {
+  background: var(--cs-bg-card);
+  border: 1px solid var(--cs-border);
+  border-radius: 8px;
+  padding: 1.35rem 1.5rem;
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.cs-feature-card:hover {
+  border-color: var(--cs-accent);
+  transform: translateY(-2px);
+}
+
+.cs-feature-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.45rem;
+}
+
+.cs-feature-num {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--cs-accent);
+}
+
+.cs-feature-title {
+  font-family: var(--font-sans);
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--cs-text-title);
+  margin: 0;
+}
+
+.cs-feature-desc {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--cs-text-muted);
+  margin: 0;
+}
+
+/* -------------------------------------------------------------
+   06. My Contributions (Concise Bullet Points)
+   ------------------------------------------------------------- */
+.cs-contributions-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cs-contribution-item {
+  position: relative;
+  padding-left: 1.75rem;
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: var(--cs-text-body);
+}
+
+.cs-contribution-item::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--cs-accent);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+/* -------------------------------------------------------------
+   07. Technology Stack (Simple Badges)
+   ------------------------------------------------------------- */
+.cs-tech-chips-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.cs-tech-chip {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--cs-text-title);
+  background: var(--cs-bg-card);
+  border: 1px solid var(--cs-border);
+  padding: 0.4rem 0.85rem;
+  border-radius: 6px;
+  transition: all var(--transition-fast);
+}
+
+.cs-tech-chip:hover {
+  border-color: var(--cs-accent);
+  color: var(--cs-accent);
+  transform: translateY(-1px);
+}
+
+/* -------------------------------------------------------------
+   08. Project Screenshots Gallery
+   ------------------------------------------------------------- */
+.cs-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.cs-gallery-card {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--cs-border);
+  background: var(--cs-bg-card);
+  cursor: pointer;
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.cs-gallery-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--cs-accent);
+}
+
+.cs-gallery-card img,
+.cs-gallery-card svg {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  display: block;
+}
+
+.cs-gallery-caption {
+  padding: 0.85rem 1.15rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--cs-text-muted);
+  border-top: 1px solid var(--cs-border);
+  background: var(--cs-bg);
+}
+
+/* -------------------------------------------------------------
+   09. Outcome & Engineering Learnings
+   ------------------------------------------------------------- */
+.cs-outcome-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.cs-outcome-card {
+  background: var(--cs-bg-card);
+  border: 1px solid var(--cs-border);
+  border-radius: 10px;
+  padding: 1.75rem;
+  border-left: 3px solid var(--cs-accent);
+}
+
+.cs-outcome-card-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--cs-accent);
+  margin-bottom: 0.5rem;
+}
+
+.cs-outcome-card-text {
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--cs-text-body);
+  margin: 0;
+}
+
+/* -------------------------------------------------------------
+   10. Project Navigation
+   ------------------------------------------------------------- */
+.cs-nav-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding-top: 3.5rem;
+  margin-top: 4rem;
+  border-top: 1px solid var(--cs-border);
+}
+
+.cs-nav-btn {
+  text-decoration: none;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  transition: transform var(--transition-fast);
+}
+
+.cs-nav-btn.prev {
+  text-align: left;
+}
+
+.cs-nav-btn.next {
+  text-align: right;
+  margin-left: auto;
+}
+
+.cs-nav-btn:hover {
+  transform: translateY(-2px);
+}
+
+.cs-nav-btn .dir {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--cs-text-muted);
+}
+
+.cs-nav-btn .name {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--cs-text-title);
+  transition: color var(--transition-fast);
+}
+
+.cs-nav-btn:hover .name {
+  color: var(--cs-accent);
+}
+
+.cs-nav-center {
+  margin: 0 auto;
+}
+
+/* -------------------------------------------------------------
+   11. Responsive Breakpoints
+   ------------------------------------------------------------- */
+@media (max-width: 860px) {
+  .cs-meta-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .cs-workflow-steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .cs-workflow-card:not(:last-child)::after {
+    display: none;
+  }
+  .cs-prob-sol-grid,
+  .cs-features-grid,
+  .cs-gallery-grid,
+  .cs-outcome-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .cs-meta-grid {
+    grid-template-columns: 1fr;
+  }
+  .cs-workflow-steps {
+    grid-template-columns: 1fr;
+  }
+  .cs-nav-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .cs-nav-btn.next {
+    text-align: left;
+    margin-left: 0;
+  }
+  .cs-article {
+    padding-top: 5rem;
+  }
+}

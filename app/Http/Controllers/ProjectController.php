@@ -40,6 +40,18 @@ class ProjectController extends Controller
             ->orderBy('sort_order', 'asc')
             ->first() ?? Project::orderBy('sort_order', 'asc')->first();
 
-        return view('projects.show', compact('project', 'nextProject', 'settings', 'navItems'));
+        // Previous project lookup
+        $prevProject = Project::where('sort_order', '<', $project->sort_order)
+            ->orderBy('sort_order', 'desc')
+            ->first() ?? Project::orderBy('sort_order', 'desc')->first();
+
+        if ($nextProject && $nextProject->id === $project->id) {
+            $nextProject = null;
+        }
+        if ($prevProject && $prevProject->id === $project->id) {
+            $prevProject = null;
+        }
+
+        return view('projects.show', compact('project', 'nextProject', 'prevProject', 'settings', 'navItems'));
     }
 }
