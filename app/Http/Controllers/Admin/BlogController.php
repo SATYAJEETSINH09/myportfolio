@@ -32,10 +32,19 @@ class BlogController extends Controller
             $query->where('status', $request->input('status'));
         }
 
-        $posts = $query->orderBy('published_at', 'desc')->orderBy('created_at', 'desc')->paginate(10);
+        if ($request->filled('category')) {
+            $query->where('category', $request->input('category'));
+        }
+
+        $totalCount = BlogPost::count();
+        $publishedCount = BlogPost::where('status', 'published')->count();
+        $draftCount = BlogPost::where('status', 'draft')->count();
+
+        $perPage = (int) $request->input('per_page', 10);
+        $posts = $query->orderBy('published_at', 'desc')->orderBy('created_at', 'desc')->paginate($perPage)->withQueryString();
         $categories = BlogPost::select('category')->distinct()->pluck('category');
 
-        return view('admin.blog.index', compact('posts', 'categories'));
+        return view('admin.blog.index', compact('posts', 'categories', 'totalCount', 'publishedCount', 'draftCount'));
     }
 
     /**

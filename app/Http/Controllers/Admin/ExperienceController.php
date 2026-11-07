@@ -13,14 +13,32 @@ class ExperienceController extends Controller
     /**
      * Display a listing of experiences.
      */
-    public function index(): View
+    public function index(Request $request): View
     {
-        $experiences = Experience::with('points')
-            ->orderBy('sort_order', 'asc')
+        $query = Experience::with('points');
+
+        if ($request->filled('search')) {
+            $search = $request->input('search');
+            $query->where(function ($q) use ($search) {
+                $q->where('company', 'like', "%{$search}%")
+                  ->orWhere('position', 'like', "%{$search}%")
+                  ->orWhere('stack', 'like', "%{$search}%");
+            });
+        }
+
+        if ($request->has('is_current') && $request->input('is_current') !== '') {
+            $query->where('is_current', $request->boolean('is_current'));
+        }
+
+        $totalCount = Experience::count();
+        $currentCount = Experience::where('is_current', true)->count();
+        $pastCount = Experience::where('is_current', false)->count();
+
+        $experiences = $query->orderBy('sort_order', 'asc')
             ->orderBy('start_date', 'desc')
             ->get();
 
-        return view('admin.experiences.index', compact('experiences'));
+        return view('admin.experiences.index', compact('experiences', 'totalCount', 'currentCount', 'pastCount'));
     }
 
     /**

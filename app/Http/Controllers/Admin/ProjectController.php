@@ -36,10 +36,24 @@ class ProjectController extends Controller
             $query->where('category', $request->input('category'));
         }
 
-        $projects = $query->orderBy('sort_order', 'asc')->orderBy('created_at', 'desc')->paginate(10);
+        if ($request->has('featured') && $request->input('featured') !== '') {
+            $query->where('featured', $request->boolean('featured'));
+        }
+
+        if ($request->filled('status')) {
+            $query->where('status', $request->input('status'));
+        }
+
+        $totalCount = Project::count();
+        $featuredCount = Project::where('featured', true)->count();
+        $completedCount = Project::where('status', 'completed')->count();
+        $inProgressCount = Project::where('status', 'in_progress')->count();
+
+        $perPage = (int) $request->input('per_page', 10);
+        $projects = $query->orderBy('sort_order', 'asc')->orderBy('created_at', 'desc')->paginate($perPage)->withQueryString();
         $categories = Project::select('category')->distinct()->pluck('category');
 
-        return view('admin.projects.index', compact('projects', 'categories'));
+        return view('admin.projects.index', compact('projects', 'categories', 'totalCount', 'featuredCount', 'completedCount', 'inProgressCount'));
     }
 
     /**

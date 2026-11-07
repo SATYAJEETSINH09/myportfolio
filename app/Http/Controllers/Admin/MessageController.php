@@ -31,10 +31,13 @@ class MessageController extends Controller
             });
         }
 
-        $messages = $query->latest()->paginate(15);
+        $perPage = (int) $request->input('per_page', 10);
+        $messages = $query->latest()->paginate($perPage)->withQueryString();
+        $totalCount = ContactMessage::count();
         $unreadCount = ContactMessage::where('status', 'unread')->count();
+        $readCount = ContactMessage::where('status', 'read')->count();
 
-        return view('admin.messages.index', compact('messages', 'unreadCount'));
+        return view('admin.messages.index', compact('messages', 'totalCount', 'unreadCount', 'readCount'));
     }
 
     /**

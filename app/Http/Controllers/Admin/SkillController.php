@@ -13,14 +13,30 @@ class SkillController extends Controller
     /**
      * Display a listing of skills.
      */
-    public function index(): View
+    public function index(Request $request): View
     {
-        $skillsByCategory = Skill::orderBy('category')
-            ->orderBy('sort_order', 'asc')
-            ->get()
-            ->groupBy('category');
+        $query = Skill::query();
 
-        return view('admin.skills.index', compact('skillsByCategory'));
+        if ($request->filled('search')) {
+            $search = $request->input('search');
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                  ->orWhere('category', 'like', "%{$search}%")
+                  ->orWhere('badge', 'like', "%{$search}%");
+            });
+        }
+
+        if ($request->filled('category')) {
+            $query->where('category', $request->input('category'));
+        }
+
+        $allCategories = Skill::select('category')->distinct()->pluck('category');
+        $totalCount = Skill::count();
+
+        $skills = $query->orderBy('category')->orderBy('sort_order', 'asc')->get();
+        $skillsByCategory = $skills->groupBy('category');
+
+        return view('admin.skills.index', compact('skillsByCategory', 'allCategories', 'totalCount'));
     }
 
     /**
